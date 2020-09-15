@@ -1,0 +1,46 @@
+Set global default styles.
+Download and set fonts (globally).
+Implement mobile first designs.
+Start with header.
+Helper classes - so don't need to add same class to individual elements(?), e.g. <nav class="flex">
+Used BEM, e.g. header classes.
+Used direct child/descendent: > span, to be as specific as possible.
+Pixel to Rem: divide pixel number by 16.
+Buttons styles: button, .button cos might want <a> with button class.
+Changed button element (CTA) to <a> cos font-weight wasn't being applied. Bug with button?
+Used _mixins.scss for implementing breakpoints. @media (min-width: 64em) Used ems cos been the most consistent amongst browsers. (1024/16). Created a SASS map: $breakpoints-up.
+
+Mixins, breakpoints - Review, around 30mins.
+
+Active states for desktop.
+
+
+Animating hamburger menu: Can't transition display: block to display: none, hence used opacity (span:nth-child(2))
+Applied transition via JS and .open.
+
+Overlay:
+
+
+Animations: Animate the overlay using @keyframes. Display prop can't be animated. Needed to use visibiliy: hidden. 
+You can transition opacity from 0 to 1, but you can't transition display: none to display: block.
+
+
+Orders her styles: 
+Bigger props first, e.g. display, position, flexbox props.
+Margin and padding
+Text color
+Transitions
+
+
+Removed the nav specific padding (padding: 1.0625rem 1.5rem; //17px 24px;) and added it to a helper class (.container in _globals) cos it's used across the whole page. I think that's the reason. 
+Explicitly set padding-top, padding-bottom (in .nav) and padding-left, padding-right (in .container) cos using the shorthand props (padding: 1.5rem 0px) was overriding one over the other (nav padding over the container padding). 
+
+Defaults to position: static if no position prop set. Any element with a position prop (and value) set (or a Z value) will sit on top of the element with no position prop set. Hence why the overlay was sitting on top of the header__menu 
+Added position: absolute (to header__menu). Can't use margin: 0 auto to centre it cos it's not in relation to anything else (it's absolute). 
+width: calc(100% - 3rem): Got 3rem from margin (1.5rem) and added it to calc cos margin (left/right) can't be applied to absolutely positioned element. To centre it, added left: 50% (moved element half way across its container) transform: transformX(-50%) (without transform, element will be left-aligned. Translate moves it (back) 50% of the width of the object itself, not of the container).
+
+fadeElems.forEach cycles through any element with the class .has-fade
+
+
+Added .noscroll (overflow: hidden) to <body> (via js) to lock scrolling on the body when menu is open. 
+
